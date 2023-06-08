@@ -4,6 +4,8 @@ import ErrorPage from "../Pages/ErrorPage/ErrorPage";
 import Home from "../Pages/Home/Home";
 import Registration from "../Pages/Registration/Registration";
 import Login from "../Pages/Login/Login";
+import DashboardHome from "../Pages/Dashboard/DashboardPages/DashboardHome/DashboardHome";
+import DashHomeCompo from "../Pages/Dashboard/DashboardComponents/DashHomeCompo/DashHomeCompo";
 
 export const router = createBrowserRouter([
   {
@@ -22,6 +24,16 @@ export const router = createBrowserRouter([
       {
         path: "registration",
         element: <Registration />,
+      },
+    ],
+  },
+  {
+    path: "dashboard",
+    element: <DashboardHome />,
+    children: [
+      {
+        path: "/dashboard",
+        element: <DashHomeCompo />,
       },
     ],
   },

@@ -1,10 +1,18 @@
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { FaGoogle } from "react-icons/fa";
 import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../AuthProvider/AuthProvider";
 
 const Registration = () => {
-  const { createUser, user, signInByGoogle } = useContext(AuthContext);
+  const [missMess, setMissMess] = useState("");
+  const {
+    createUser,
+    user,
+    signInByGoogle,
+    updateUserProfile,
+    loading,
+    setLoading,
+  } = useContext(AuthContext);
   const navigate = useNavigate();
 
   const handleRegistration = (event) => {
@@ -18,9 +26,31 @@ const Registration = () => {
     const userData = { name, email, photo, password, confirmPassword };
     console.log(userData);
 
+    if (password === confirmPassword) {
+      return setMissMess("missMess Your Password");
+    }
+    if (
+      /"^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{6,}$"/.test(
+        password
+      )
+    ) {
+      setMissMess("successfully created");
+      return;
+    } else {
+      setMissMess(
+        "Minimum six characters, at least one letter, one number and one special character"
+      );
+    }
+
     createUser(email, password)
-      .then((res) => console.log(res))
+      .then((res) => console.log(res.user))
       .catch((error) => console.log(error));
+    updateUserProfile(name, photo)
+      .then(() => {})
+      .catch((err) => {
+        setLoading(false);
+        console.log(err);
+      });
     navigate("/");
   };
 
@@ -31,6 +61,7 @@ const Registration = () => {
   };
   return (
     <div className="w-6/12 mx-auto my-8 shadow-2xl pb-3">
+      <p>{missMess} </p>
       <form onSubmit={handleRegistration}>
         <div className="card-body ">
           <div className="form-control">

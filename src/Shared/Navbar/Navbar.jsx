@@ -4,7 +4,7 @@ import { AuthContext } from "../../AuthProvider/AuthProvider";
 
 const Navbar = () => {
   const { user, userLogOut } = useContext(AuthContext);
-
+  console.log(user);
   const handleLogOut = () => {
     userLogOut()
       .then(() => {})
@@ -18,7 +18,11 @@ const Navbar = () => {
 
       <Link>Classes</Link>
 
-      {user ? <Link>Dashboard</Link> : <Link to="/login">Login</Link>}
+      {user ? (
+        <Link to="/dashboard/">Dashboard</Link>
+      ) : (
+        <Link to="/login">Login</Link>
+      )}
     </div>
   );
   return (
@@ -66,10 +70,7 @@ const Navbar = () => {
                   className="btn btn-ghost  btn-circle avatar"
                 >
                   <div className="w-10 rounded-full ">
-                    <img
-                      className=""
-                      src="/images/stock/photo-1534528741775-53994a69daeb.jpg"
-                    />
+                    <img className="" src={user && user?.photoURL} />
                   </div>
                 </label>
               </>

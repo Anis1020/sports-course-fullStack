@@ -1,9 +1,12 @@
 import React from "react";
+import BannerSection from "../../Components/HomePage/Banner/BannerSection";
+import ClassSection from "../../Components/HomePage/ClassSection/ClassSection";
 
 const Home = () => {
   return (
     <div>
-      <h3>from home</h3>
+      <BannerSection />
+      <ClassSection />
     </div>
   );
 };

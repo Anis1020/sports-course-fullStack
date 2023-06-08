@@ -17,10 +17,14 @@ const Footer = () => {
         <div className="mx-auto">
           <span className="footer-title">Contact Info</span>
           <div className="grid grid-flow-col gap-4 mx-auto">
-            <a className="text-3xl">
+            <a
+              href="www,facebook.com/anis2you"
+              target="_blank"
+              className="text-3xl"
+            >
               <FaFacebook />
             </a>
-            <a className="text-3xl">
+            <a href="www.youtube.com" target="_blank" className="text-3xl">
               <FaYoutube />
             </a>
           </div>
