@@ -7,7 +7,7 @@ const DashboardHome = () => {
     <div>
       <div className="drawer lg:drawer-open">
         <input id="my-drawer-2" type="checkbox" className="drawer-toggle" />
-        <div className="drawer-content flex flex-col items-center justify-center">
+        <div className="drawer-content w-8/12 mx-auto ">
           {/* Page content here */}
 
           <Outlet />
@@ -23,11 +23,23 @@ const DashboardHome = () => {
           <ul className="menu p-4 w-80 h-full bg-base-200 text-base-content">
             {/* Sidebar content here */}
             <li>
-              <Link>Home</Link>
+              <Link to="/">Home</Link>
             </li>
+            {/* its for student */}
+            <li>
+              <Link>My Selected Classes</Link>
+            </li>{" "}
+            <li>
+              <Link>My Enrolled Classes</Link>
+            </li>
+            {/* its for instractor */}
+            <li>
+              <Link to="/dashboard/addAClass">Add a Class</Link>
+            </li>{" "}
             <li>
               <Link>My Classes</Link>
             </li>
+            <div className="divider"></div>
           </ul>
         </div>
       </div>
