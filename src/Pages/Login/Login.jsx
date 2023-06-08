@@ -1,18 +1,31 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import { FaEye, FaGoogle } from "react-icons/fa";
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
+import { AuthContext } from "../../AuthProvider/AuthProvider";
 
 const Login = () => {
   const [hideShow, setHideShow] = useState(false);
-  //TODO: password hide show
+  const location = useLocation();
+  const navigate = useNavigate();
+  const { loginUser } = useContext(AuthContext);
+
   const handleHideShow = () => {
-    setHideShow(true);
-    console.log(!hideShow);
+    setHideShow(!hideShow);
+  };
+  const handleLogin = (event) => {
+    event.preventDefault();
+    const form = event.target;
+    const email = form.email.value;
+    const password = form.password.value;
+    loginUser(email, password)
+      .then((res) => console.log(res))
+      .then((err) => console.log(err));
+    navigate("/");
   };
   return (
     <div>
       <div className="w-6/12 mx-auto my-8 shadow-2xl pb-3">
-        <form>
+        <form onSubmit={handleLogin}>
           <div className="card-body ">
             <div className="form-control">
               <label className="label">
@@ -29,13 +42,13 @@ const Login = () => {
                 <span className="label-text">Password</span>
               </label>
               <input
-                type="password"
+                type={hideShow ? "text" : "password"}
                 name="password"
                 className="input input-bordered "
               />
               <span
-                onClick={() => handleHideShow(!hideShow)}
-                className="absolute top-9 right-1 rounded bg-slate-600 p-4"
+                onClick={handleHideShow}
+                className="absolute top-9 right-1 rounded p-4"
               >
                 <FaEye />
               </span>

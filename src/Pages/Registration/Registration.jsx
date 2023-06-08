@@ -1,7 +1,12 @@
+import { useContext } from "react";
 import { FaGoogle } from "react-icons/fa";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import { AuthContext } from "../../AuthProvider/AuthProvider";
 
 const Registration = () => {
+  const { createUser, user } = useContext(AuthContext);
+  const navigate = useNavigate();
+
   const handleRegistration = (event) => {
     event.preventDefault();
     const form = event.target;
@@ -12,6 +17,11 @@ const Registration = () => {
     const confirmPassword = form.confirmPassword.value;
     const userData = { name, email, photo, password, confirmPassword };
     console.log(userData);
+
+    createUser(email, password)
+      .then((res) => console.log(res))
+      .catch((error) => console.log(error));
+    navigate("/");
   };
   return (
     <div className="w-6/12 mx-auto my-8 shadow-2xl pb-3">
