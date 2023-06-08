@@ -1,8 +1,14 @@
-import React from "react";
-import { FaGoogle } from "react-icons/fa";
+import React, { useState } from "react";
+import { FaEye, FaGoogle } from "react-icons/fa";
 import { Link } from "react-router-dom";
 
 const Login = () => {
+  const [hideShow, setHideShow] = useState(false);
+  //TODO: password hide show
+  const handleHideShow = () => {
+    setHideShow(true);
+    console.log(!hideShow);
+  };
   return (
     <div>
       <div className="w-6/12 mx-auto my-8 shadow-2xl pb-3">
@@ -18,19 +24,30 @@ const Login = () => {
                 className="input input-bordered"
               />
             </div>
-            <div className="form-control">
+            <div className="form-control relative">
               <label className="label">
                 <span className="label-text">Password</span>
               </label>
               <input
-                type="text"
+                type="password"
                 name="password"
-                className="input input-bordered"
+                className="input input-bordered "
               />
+              <span
+                onClick={() => handleHideShow(!hideShow)}
+                className="absolute top-9 right-1 rounded bg-slate-600 p-4"
+              >
+                <FaEye />
+              </span>
+              {/* <label className="label">
+                <a href="#" className="label-text-alt link link-hover">
+                  Forgot password?
+                </a>
+              </label> */}
             </div>
 
             <div className="form-control mt-6">
-              <button className="btn btn-primary">Registration</button>
+              <button className="btn btn-primary">Login</button>
             </div>
           </div>
         </form>
