@@ -17,6 +17,12 @@ const Registration = () => {
               <span className="label-text">Email</span>
             </label>
             <input type="text" name="email" className="input input-bordered" />
+          </div>{" "}
+          <div className="form-control">
+            <label className="label">
+              <span className="label-text">Photo URL</span>
+            </label>
+            <input type="text" name="photo" className="input input-bordered" />
           </div>
           <div className="form-control">
             <label className="label">
@@ -49,7 +55,10 @@ const Registration = () => {
         </div>
       </form>
       <p>
-        Are you new to this website? <Link to="/login">Login</Link>
+        Already have an account?{" "}
+        <Link className="btn btn-link" to="/login">
+          Login
+        </Link>
       </p>
       <div className=" mt-6">
         <button className="btn btn-primary">
