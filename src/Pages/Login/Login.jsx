@@ -7,7 +7,7 @@ const Login = () => {
   const [hideShow, setHideShow] = useState(false);
   const location = useLocation();
   const navigate = useNavigate();
-  const { loginUser } = useContext(AuthContext);
+  const { loginUser, signInByGoogle } = useContext(AuthContext);
 
   const handleHideShow = () => {
     setHideShow(!hideShow);
@@ -19,8 +19,13 @@ const Login = () => {
     const password = form.password.value;
     loginUser(email, password)
       .then((res) => console.log(res))
-      .then((err) => console.log(err));
+      .catch((err) => console.log(err));
     navigate("/");
+  };
+  const handleGoogleSignIn = () => {
+    signInByGoogle()
+      .then(() => {})
+      .catch((err) => console.log(err));
   };
   return (
     <div>
@@ -71,7 +76,7 @@ const Login = () => {
           </Link>
         </p>
         <div className=" mt-6">
-          <button className="btn btn-primary">
+          <button onClick={handleGoogleSignIn} className="btn btn-primary">
             <FaGoogle />
             Sign UP by Google
           </button>

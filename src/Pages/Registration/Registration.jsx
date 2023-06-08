@@ -4,7 +4,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../AuthProvider/AuthProvider";
 
 const Registration = () => {
-  const { createUser, user } = useContext(AuthContext);
+  const { createUser, user, signInByGoogle } = useContext(AuthContext);
   const navigate = useNavigate();
 
   const handleRegistration = (event) => {
@@ -22,6 +22,12 @@ const Registration = () => {
       .then((res) => console.log(res))
       .catch((error) => console.log(error));
     navigate("/");
+  };
+
+  const handleGoogleSignIn = () => {
+    signInByGoogle()
+      .then(() => {})
+      .catch((err) => console.log(err));
   };
   return (
     <div className="w-6/12 mx-auto my-8 shadow-2xl pb-3">
@@ -89,7 +95,7 @@ const Registration = () => {
         </Link>
       </p>
       <div className=" mt-6">
-        <button className="btn btn-primary">
+        <button onClick={handleGoogleSignIn} className="btn btn-primary">
           <FaGoogle />
           Sign UP by Google
         </button>
