@@ -1,25 +1,25 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Link } from "react-router-dom";
+import { AuthContext } from "../../AuthProvider/AuthProvider";
 
 const Navbar = () => {
+  const { user, userLogOut } = useContext(AuthContext);
+
+  const handleLogOut = () => {
+    userLogOut()
+      .then(() => {})
+      .catch((err) => console.log(err));
+  };
   const navbarOptions = (
-    <>
-      <li>
-        <Link>Home</Link>
-      </li>{" "}
-      <li>
-        <Link>Instructors</Link>
-      </li>{" "}
-      <li>
-        <Link>Classes</Link>
-      </li>
-      <li>
-        <Link>Dashboard</Link>
-      </li>
-      <li>
-        <Link to="/login">Login</Link>
-      </li>
-    </>
+    <div className="space-x-4 text-lg ">
+      <Link>Home</Link>
+
+      <Link>Instructors</Link>
+
+      <Link>Classes</Link>
+
+      {user ? <Link>Dashboard</Link> : <Link to="/login">Login</Link>}
+    </div>
   );
   return (
     <div>
@@ -51,11 +51,30 @@ const Navbar = () => {
           </div>
           <a className="btn btn-ghost normal-case text-xl">Gym School</a>
         </div>
-        <div className="navbar-center hidden lg:flex">
+        <div className="navbar-center hidden lg:flex ml-auto">
           <ul className="menu menu-horizontal px-1">{navbarOptions}</ul>
         </div>
-        <div className="navbar-end">
-          <a className="btn">Button</a>
+        <div className="space-x-4">
+          {user && (
+            <>
+              <>
+                <Link onClick={handleLogOut} className="ml-3" to="/login">
+                  LogOut
+                </Link>
+                <label
+                  tabIndex={0}
+                  className="btn btn-ghost  btn-circle avatar"
+                >
+                  <div className="w-10 rounded-full ">
+                    <img
+                      className=""
+                      src="/images/stock/photo-1534528741775-53994a69daeb.jpg"
+                    />
+                  </div>
+                </label>
+              </>
+            </>
+          )}
         </div>
       </div>
     </div>
