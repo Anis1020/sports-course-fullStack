@@ -6,12 +6,18 @@ const Navbar = () => {
     <>
       <li>
         <Link>Home</Link>
+      </li>{" "}
+      <li>
+        <Link>Instructors</Link>
+      </li>{" "}
+      <li>
+        <Link>Classes</Link>
       </li>
       <li>
         <Link>Dashboard</Link>
       </li>
       <li>
-        <Link>My Class</Link>
+        <Link to="/registration">Registration</Link>
       </li>
     </>
   );
