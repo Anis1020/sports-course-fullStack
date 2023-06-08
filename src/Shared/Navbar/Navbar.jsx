@@ -1,6 +1,7 @@
 import React, { useContext } from "react";
 import { Link } from "react-router-dom";
 import { AuthContext } from "../../AuthProvider/AuthProvider";
+import ActiveLink from "../ActiveLink/ActiveLink";
 
 const Navbar = () => {
   const { user, userLogOut } = useContext(AuthContext);
@@ -12,16 +13,16 @@ const Navbar = () => {
   };
   const navbarOptions = (
     <div className="space-x-4 text-lg ">
-      <Link>Home</Link>
+      <ActiveLink to="/">Home</ActiveLink>
 
-      <Link>Instructors</Link>
+      <ActiveLink to="/instructor">Instructors</ActiveLink>
 
-      <Link>Classes</Link>
+      <ActiveLink to="/classes">Classes</ActiveLink>
 
       {user ? (
-        <Link to="/dashboard/">Dashboard</Link>
+        <ActiveLink to="/dashboard/">Dashboard</ActiveLink>
       ) : (
-        <Link to="/login">Login</Link>
+        <ActiveLink to="/login">Login</ActiveLink>
       )}
     </div>
   );
@@ -53,7 +54,7 @@ const Navbar = () => {
               {navbarOptions}
             </ul>
           </div>
-          <a className="btn btn-ghost normal-case text-xl">Gym School</a>
+          <a className="btn btn-ghost normal-case text-xl">Sports School</a>
         </div>
         <div className="navbar-center hidden lg:flex ml-auto">
           <ul className="menu menu-horizontal px-1">{navbarOptions}</ul>

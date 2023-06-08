@@ -3,6 +3,7 @@ import React from "react";
 const ClassSection = () => {
   return (
     <div>
+      <h2 className="text-2xl my-4">Popular Classes Section</h2>
       <div className="card w-96 bg-base-100 shadow-2xl my-8">
         <figure>
           <img

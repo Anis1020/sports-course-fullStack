@@ -7,6 +7,8 @@ import Login from "../Pages/Login/Login";
 import DashboardHome from "../Pages/Dashboard/DashboardPages/DashboardHome/DashboardHome";
 import DashHomeCompo from "../Pages/Dashboard/DashboardComponents/DashHomeCompo/DashHomeCompo";
 import ClassAddForm from "../Pages/Dashboard/DashboardPages/ClassAddForm/ClassAddForm";
+import Instructors from "../Pages/Instructors/Instructors";
+import AllClasses from "../Pages/AllClasses/AllClasses";
 
 export const router = createBrowserRouter([
   {
@@ -17,6 +19,14 @@ export const router = createBrowserRouter([
       {
         path: "/",
         element: <Home />,
+      },
+      {
+        path: "instructor",
+        element: <Instructors />,
+      },
+      {
+        path: "classes",
+        element: <AllClasses />,
       },
       {
         path: "login",
