@@ -35,7 +35,7 @@ const ReviewSection = () => {
             it is a trusted institution, and they are very friendly teacher they
             support us a lot{" "}
           </p>
-          <span className="flex">
+          <span className="flex text-orange-700">
             <FaStar /> <FaStar /> <FaStar /> <FaStar /> <FaStar />
           </span>
         </SwiperSlide>
@@ -49,7 +49,7 @@ const ReviewSection = () => {
             it is a trusted institution, and they are very friendly teacher they
             support us a lot{" "}
           </p>
-          <span className="flex">
+          <span className="flex text-orange-700">
             <FaStar /> <FaStar /> <FaStar /> <FaStar /> <FaStar />
           </span>
         </SwiperSlide>
@@ -63,7 +63,7 @@ const ReviewSection = () => {
             it is a trusted institution, and they are very friendly teacher they
             support us a lot{" "}
           </p>
-          <span className="flex">
+          <span className="flex text-orange-700">
             <FaStar /> <FaStar /> <FaStar /> <FaStar /> <FaStar />
           </span>
         </SwiperSlide>
@@ -77,7 +77,7 @@ const ReviewSection = () => {
             it is a trusted institution, and they are very friendly teacher they
             support us a lot{" "}
           </p>
-          <span className="flex">
+          <span className="flex text-orange-700">
             <FaStar /> <FaStar /> <FaStar /> <FaStar /> <FaStar />
           </span>
         </SwiperSlide>
@@ -91,7 +91,7 @@ const ReviewSection = () => {
             it is a trusted institution, and they are very friendly teacher they
             support us a lot{" "}
           </p>
-          <span className="flex">
+          <span className="flex text-orange-700">
             <FaStar /> <FaStar /> <FaStar /> <FaStar /> <FaStar />
           </span>
         </SwiperSlide>
