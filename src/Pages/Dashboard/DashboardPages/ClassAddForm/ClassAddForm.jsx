@@ -1,11 +1,41 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../../../../AuthProvider/AuthProvider";
 
 const ClassAddForm = () => {
   const { user } = useContext(AuthContext);
+  const [classes, setClasses] = useState([]);
+
+  const handleAddClass = (event) => {
+    event.preventDefault();
+    const form = event.target;
+    const className = form.className.value;
+    const classImg = form.classImg.value;
+    const availAbleSeats = form.availAbleSeats.value;
+    const price = form.price.value;
+    const classInfo = {
+      className,
+      classImg,
+      availAbleSeats,
+      price,
+    };
+    useEffect(() => {
+      fetch("http://localhost:5000/addAClass", {
+        method: "POST",
+        headers: {
+          "content-type": "application/json",
+        },
+        body: JSON.stringify(classInfo),
+      })
+        .then((res) => res.json())
+        .then((data) => {
+          setClasses(data);
+        });
+    }, [classes]);
+  };
+
   return (
     <div>
-      <form>
+      <form onSubmit={handleAddClass}>
         <div className="card-body shadow-2xl">
           <div className="form-control">
             <label className="label">
@@ -22,7 +52,7 @@ const ClassAddForm = () => {
               <span className="label-text">Class Image</span>
             </label>
             <input
-              type="text"
+              type="url"
               name="classImg"
               className="input input-bordered"
             />
