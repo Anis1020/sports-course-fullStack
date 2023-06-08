@@ -1,10 +1,15 @@
-import { useContext, useState } from "react";
-import { FaGoogle } from "react-icons/fa";
-import { Link, useNavigate } from "react-router-dom";
+import { useContext, useEffect, useState } from "react";
+import { FaEye, FaGoogle } from "react-icons/fa";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../AuthProvider/AuthProvider";
+import { saveUser } from "../../api/auth";
 
 const Registration = () => {
   const [missMess, setMissMess] = useState("");
+  const [hideShow, setHideShow] = useState(false);
+  const location = useLocation();
+  const navigate = useNavigate();
+  const from = location.state?.from?.pathName || "/";
   const {
     createUser,
     user,
@@ -13,7 +18,6 @@ const Registration = () => {
     loading,
     setLoading,
   } = useContext(AuthContext);
-  const navigate = useNavigate();
 
   const handleRegistration = (event) => {
     event.preventDefault();
@@ -26,11 +30,11 @@ const Registration = () => {
     const userData = { name, email, photo, password, confirmPassword };
     console.log(userData);
 
-    if (password === confirmPassword) {
+    if (!password === confirmPassword) {
       return setMissMess("missMess Your Password");
     }
     if (
-      /"^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{6,}$"/.test(
+      /"^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,}$"/.test(
         password
       )
     ) {
@@ -43,21 +47,31 @@ const Registration = () => {
     }
 
     createUser(email, password)
-      .then((res) => console.log(res.user))
+      .then((result) => {
+        updateUserProfile(name, photo)
+          .then(() => {
+            saveUser(result.user);
+            navigate(from, { replace: true });
+          })
+          .catch((err) => {
+            console.log(err);
+          });
+      })
       .catch((error) => console.log(error));
-    updateUserProfile(name, photo)
-      .then(() => {})
-      .catch((err) => {
-        setLoading(false);
-        console.log(err);
-      });
-    navigate("/");
   };
 
   const handleGoogleSignIn = () => {
     signInByGoogle()
-      .then(() => {})
+      .then((result) => {
+        console.log(result.usr);
+        saveUser(result.user);
+        navigate(from, { replace: true });
+      })
       .catch((err) => console.log(err));
+  };
+
+  const handleHideShow = () => {
+    setHideShow(!hideShow);
   };
   return (
     <div className="w-6/12 mx-auto my-8 shadow-2xl pb-3">
@@ -92,7 +106,7 @@ const Registration = () => {
             </label>
             <input type="url" name="photo" className="input input-bordered" />
           </div>
-          <div className="form-control">
+          <div className="form-control relative">
             <label className="label">
               <span className="label-text">Password</span>
             </label>
@@ -102,8 +116,14 @@ const Registration = () => {
               required
               className="input input-bordered"
             />
+            {/* <span
+              onClick={handleHideShow}
+              className="absolute top-9 right-1 rounded p-4"
+            >
+              <FaEye />
+            </span> */}
           </div>
-          <div className="form-control">
+          <div className="form-control relative">
             <label className="label">
               <span className="label-text">Confirm Password</span>
             </label>
@@ -113,6 +133,12 @@ const Registration = () => {
               name="confirmPassword"
               className="input input-bordered"
             />
+            <span
+              onClick={handleHideShow}
+              className="absolute top-9 right-1 rounded p-4"
+            >
+              <FaEye />
+            </span>
           </div>
           <div className="form-control mt-6">
             <button className="btn btn-primary">Registration</button>

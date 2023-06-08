@@ -9,6 +9,11 @@ import DashHomeCompo from "../Pages/Dashboard/DashboardComponents/DashHomeCompo/
 import ClassAddForm from "../Pages/Dashboard/DashboardPages/ClassAddForm/ClassAddForm";
 import Instructors from "../Pages/Instructors/Instructors";
 import AllClasses from "../Pages/AllClasses/AllClasses";
+import PrivetRoute from "./PrivetRoute";
+import AllUsers from "../Pages/Dashboard/DashboardPages/AllUsers/AllUsers";
+import MyClasses from "../Pages/Dashboard/DashboardPages/MyClasses/MyClasses";
+import SelectedClasses from "../Pages/Dashboard/DashboardPages/SelectedClasses/SelectedClasses";
+import EnroledClass from "../Pages/Dashboard/DashboardPages/EnroledClass/EnroledClass";
 
 export const router = createBrowserRouter([
   {
@@ -47,8 +52,24 @@ export const router = createBrowserRouter([
         element: <DashHomeCompo />,
       },
       {
+        path: "/dashboard/selectedClass",
+        element: <SelectedClasses />,
+      },
+      {
+        path: "/dashboard/enrolled",
+        element: <EnroledClass />,
+      },
+      {
         path: "/dashboard/addAClass",
         element: <ClassAddForm />,
+      },
+      {
+        path: "/dashboard/myClasses",
+        element: <MyClasses />,
+      },
+      {
+        path: "/dashboard/allUsers",
+        element: <AllUsers />,
       },
     ],
   },

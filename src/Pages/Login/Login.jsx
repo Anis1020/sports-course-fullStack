@@ -2,13 +2,14 @@ import React, { useContext, useState } from "react";
 import { FaEye, FaGoogle } from "react-icons/fa";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../AuthProvider/AuthProvider";
+import { saveUser } from "../../api/auth";
 
 const Login = () => {
   const [hideShow, setHideShow] = useState(false);
   const location = useLocation();
   const navigate = useNavigate();
   const { loginUser, signInByGoogle } = useContext(AuthContext);
-
+  const from = location.state?.from?.pathName || "/";
   const handleHideShow = () => {
     setHideShow(!hideShow);
   };
@@ -20,11 +21,15 @@ const Login = () => {
     loginUser(email, password)
       .then((res) => console.log(res))
       .catch((err) => console.log(err));
-    navigate("/");
+    navigate(from, { replace: true });
   };
   const handleGoogleSignIn = () => {
     signInByGoogle()
-      .then(() => {})
+      .then((result) => {
+        console.log(result.user);
+        saveUser(result.user);
+        navigate(from, { replace: true });
+      })
       .catch((err) => console.log(err));
   };
   return (

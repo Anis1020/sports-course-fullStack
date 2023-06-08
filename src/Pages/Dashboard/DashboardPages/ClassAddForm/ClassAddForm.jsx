@@ -34,7 +34,7 @@ const ClassAddForm = () => {
             <input
               type="text"
               name="instructorName"
-              defaultValue={user?.name}
+              defaultValue={user?.displayName}
               className="input input-bordered"
             />
           </div>{" "}

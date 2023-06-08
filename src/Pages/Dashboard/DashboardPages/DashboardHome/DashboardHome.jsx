@@ -1,6 +1,7 @@
 import React from "react";
 import { Link, Outlet } from "react-router-dom";
 import DashHomeCompo from "../../DashboardComponents/DashHomeCompo/DashHomeCompo";
+import ActiveLink from "../../../../Shared/ActiveLink/ActiveLink";
 
 const DashboardHome = () => {
   return (
@@ -27,17 +28,24 @@ const DashboardHome = () => {
             </li>
             {/* its for student */}
             <li>
-              <Link>My Selected Classes</Link>
+              <ActiveLink to="/dashboard/selectedClass">
+                My Selected Classes
+              </ActiveLink>
             </li>{" "}
             <li>
-              <Link>My Enrolled Classes</Link>
+              <ActiveLink to="/dashboard/enrolled">
+                My Enrolled Classes
+              </ActiveLink>
             </li>
             {/* its for instractor */}
             <li>
-              <Link to="/dashboard/addAClass">Add a Class</Link>
+              <ActiveLink to="/dashboard/addAClass">Add a Class</ActiveLink>
             </li>{" "}
             <li>
-              <Link>My Classes</Link>
+              <ActiveLink to="/dashboard/myClasses">My Classes</ActiveLink>
+            </li>{" "}
+            <li>
+              <ActiveLink to="/dashboard/allUsers">AllUsers</ActiveLink>
             </li>
             <div className="divider"></div>
           </ul>
