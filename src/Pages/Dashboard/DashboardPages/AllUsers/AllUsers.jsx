@@ -6,7 +6,8 @@ import Swal from "sweetalert2";
 const AllUsers = () => {
   const { user } = useContext(AuthContext);
   const [allUser, setAllUser] = useState([]);
-  console.log(allUser);
+  const [admin, setAdmin] = useState(false);
+
   useEffect(() => {
     fetch("http://localhost:5000/users", {
       method: "GET",
@@ -16,7 +17,7 @@ const AllUsers = () => {
         console.log(data);
         setAllUser(data);
       });
-  }, []);
+  }, [admin]);
 
   const handleMakeAdmin = (user) => {
     fetch(`http://localhost:5000/users/admin/${user._id}`, {
@@ -28,18 +29,34 @@ const AllUsers = () => {
           Swal.fire({
             position: "top-end",
             icon: "success",
-            title: "Your work has been saved",
+            title: `${user.name} is an admin now`,
             showConfirmButton: false,
             timer: 1500,
           });
         }
+        setAdmin(true);
       });
   };
 
-  const handleDelete = () => {};
+  const handleDeleteUser = (user) => {
+    fetch(`http://localhost:5000/deleteUser/${user._id}`, {
+      method: "DELETE",
+    })
+      .then(() => {})
+      .then((data) => {
+        Swal.fire({
+          position: "top-end",
+          icon: "success",
+          title: `${user.name} successfully deleted`,
+          showConfirmButton: false,
+          timer: 1500,
+        });
+        setAdmin(true);
+      });
+  };
   return (
     <div>
-      <h3>all user from dashbo {allUser?.length}</h3>
+      <h3>Total users {allUser?.length}</h3>
       <div className="overflow-x-auto">
         <table className="table">
           {/* head */}
@@ -62,7 +79,7 @@ const AllUsers = () => {
                 <td onClick={() => handleMakeAdmin(user)}>
                   {user.role === "admin" ? "admin" : <FaUser />}
                 </td>
-                <td onClick={handleDelete}>
+                <td onClick={() => handleDeleteUser(user)}>
                   <FaTrash />
                 </td>
               </tr>
