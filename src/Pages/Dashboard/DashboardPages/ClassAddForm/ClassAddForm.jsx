@@ -17,6 +17,8 @@ const ClassAddForm = () => {
       classImg,
       availAbleSeats,
       price,
+      name: user.displayName,
+      email: user.email,
     };
 
     fetch("http://localhost:5000/addAClass", {
