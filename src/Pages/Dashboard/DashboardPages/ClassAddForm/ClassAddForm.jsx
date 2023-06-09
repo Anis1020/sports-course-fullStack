@@ -18,19 +18,20 @@ const ClassAddForm = () => {
       availAbleSeats,
       price,
     };
-    useEffect(() => {
-      fetch("http://localhost:5000/addAClass", {
-        method: "POST",
-        headers: {
-          "content-type": "application/json",
-        },
-        body: JSON.stringify(classInfo),
-      })
-        .then((res) => res.json())
-        .then((data) => {
-          setClasses(data);
-        });
-    }, [classes]);
+
+    fetch("http://localhost:5000/addAClass", {
+      method: "POST",
+      headers: {
+        "content-type": "application/json",
+      },
+      body: JSON.stringify(classInfo),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        alert("class add successfully");
+        setClasses(data);
+        console.log(data);
+      });
   };
 
   return (
