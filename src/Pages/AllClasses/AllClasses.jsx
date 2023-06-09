@@ -6,7 +6,9 @@ const AllClasses = () => {
   const [allClass, setAllClass] = useState([]);
 
   useEffect(() => {
-    fetch("http://localhost:5000/allClass")
+    fetch("https://assignment-12-sever-side-anis1020.vercel.app/allClass", {
+      method: "GET",
+    })
       .then((res) => res.json())
       .then((data) => {
         console.log(data);

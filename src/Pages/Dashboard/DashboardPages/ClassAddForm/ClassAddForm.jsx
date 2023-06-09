@@ -21,7 +21,7 @@ const ClassAddForm = () => {
       email: user.email,
     };
 
-    fetch("http://localhost:5000/addAClass", {
+    fetch("https://assignment-12-sever-side-anis1020.vercel.app/addAClass", {
       method: "POST",
       headers: {
         "content-type": "application/json",

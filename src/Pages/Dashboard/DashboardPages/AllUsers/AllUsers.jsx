@@ -33,17 +33,19 @@ const AllUsers = () => {
           </thead>
           <tbody>
             {/* row 1 */}
-            <tr>
-              <th>1</th>
-              <td>shakil khan</td>
-              <td>Quality Control Specialist</td>
-              <td>
-                <FaUser />
-              </td>
-              <td>
-                <FaTrash />
-              </td>
-            </tr>
+            {allUser.map((user, index) => (
+              <tr key={user._id}>
+                <th>{index + 1}</th>
+                <td>{user.name}</td>
+                <td>{user.email.email}</td>
+                <td>
+                  <FaUser />
+                </td>
+                <td>
+                  <FaTrash />
+                </td>
+              </tr>
+            ))}
           </tbody>
         </table>
       </div>

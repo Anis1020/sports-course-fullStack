@@ -70,9 +70,9 @@ const Registration = () => {
       .catch((err) => console.log(err));
   };
 
-  const handleHideShow = () => {
-    setHideShow(!hideShow);
-  };
+  // const handleHideShow = () => {
+  //   setHideShow(!hideShow);
+  // };
   return (
     <div className="w-6/12 mx-auto my-8 shadow-2xl pb-3">
       <p>{missMess} </p>
@@ -133,12 +133,12 @@ const Registration = () => {
               name="confirmPassword"
               className="input input-bordered"
             />
-            <span
+            {/* <span
               onClick={handleHideShow}
               className="absolute top-9 right-1 rounded p-4"
             >
               <FaEye />
-            </span>
+            </span> */}
           </div>
           <div className="form-control mt-6">
             <button className="btn btn-primary">Registration</button>
