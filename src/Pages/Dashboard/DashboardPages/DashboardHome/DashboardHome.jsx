@@ -8,7 +8,7 @@ const DashboardHome = () => {
     <div>
       <div className="drawer lg:drawer-open">
         <input id="my-drawer-2" type="checkbox" className="drawer-toggle" />
-        <div className="drawer-content w-8/12 mx-auto ">
+        <div className="drawer-content w-10/12 mx-auto ">
           {/* Page content here */}
 
           <Outlet />
