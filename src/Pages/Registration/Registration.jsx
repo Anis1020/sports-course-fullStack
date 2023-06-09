@@ -27,7 +27,7 @@ const Registration = () => {
     const photo = form.photo.value;
     const password = form.password.value;
     const confirmPassword = form.confirmPassword.value;
-    const userData = { name, email, photo, password, confirmPassword };
+    const userData = { name, email };
     console.log(userData);
 
     if (!password === confirmPassword) {
@@ -48,16 +48,21 @@ const Registration = () => {
 
     createUser(email, password)
       .then((result) => {
+        console.log(result);
         updateUserProfile(name, photo)
           .then(() => {
+            // save user in db
             saveUser(result.user);
+
             navigate(from, { replace: true });
           })
           .catch((err) => {
             console.log(err);
           });
       })
-      .catch((error) => console.log(error));
+      .catch((error) => {
+        alert("already axist in fire base");
+      });
   };
 
   const handleGoogleSignIn = () => {

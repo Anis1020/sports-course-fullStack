@@ -1,15 +1,18 @@
 export const saveUser = (user) => {
-  const createUser = {
+  const saveUser = {
     email: user.email,
-    name: user.name,
+    name: user.displayName,
   };
-  fetch(`http://localhost:5000/users/${user?.email}`, {
-    method: "PUT",
+  fetch("http://localhost:5000/users/", {
+    method: "POST",
     headers: {
       "content-type": "application/json",
     },
-    body: JSON.stringify(createUser),
+    body: JSON.stringify(saveUser),
   })
     .then((res) => res.json())
-    .then((data) => console.log(data));
+    .then((data) => {
+      console.log(data);
+    });
 };
+//https://assignment-12-sever-side-anis1020.vercel.app/addAClass

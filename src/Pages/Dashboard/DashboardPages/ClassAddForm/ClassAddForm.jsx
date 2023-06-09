@@ -1,5 +1,6 @@
 import React, { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../../../../AuthProvider/AuthProvider";
+import Swal from "sweetalert2";
 
 const ClassAddForm = () => {
   const { user } = useContext(AuthContext);
@@ -21,7 +22,7 @@ const ClassAddForm = () => {
       email: user.email,
     };
 
-    fetch("https://assignment-12-sever-side-anis1020.vercel.app/addAClass", {
+    fetch("http://localhost:5000/addAClass", {
       method: "POST",
       headers: {
         "content-type": "application/json",
@@ -30,8 +31,15 @@ const ClassAddForm = () => {
     })
       .then((res) => res.json())
       .then((data) => {
-        alert("class add successfully");
         setClasses(data);
+        Swal.fire({
+          position: "top-end",
+          icon: "success",
+          title: "Successfully added class",
+          showConfirmButton: false,
+          timer: 1500,
+        });
+
         console.log(data);
       });
   };

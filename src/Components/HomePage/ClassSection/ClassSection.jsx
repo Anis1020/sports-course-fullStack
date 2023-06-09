@@ -1,7 +1,7 @@
 import React from "react";
 
 const ClassSection = ({ allClass }) => {
-  console.log(allClass);
+  // console.log(allClass);
   return (
     <div>
       <h2 className="text-2xl my-4">Popular Classes Section</h2>

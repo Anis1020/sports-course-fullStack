@@ -13,7 +13,7 @@ const Home = () => {
     })
       .then((res) => res.json())
       .then((data) => {
-        console.log(data);
+        // console.log(data);
         setAllClass(data.splice(0, 6));
       });
   }, []);
