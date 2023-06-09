@@ -1,6 +1,6 @@
 import React from "react";
 import { Link, Outlet } from "react-router-dom";
-import DashHomeCompo from "../../DashboardComponents/DashHomeCompo/DashHomeCompo";
+import DashHomeCompo from "../../DashboardComponents/DashHomeCompo";
 import ActiveLink from "../../../../Shared/ActiveLink/ActiveLink";
 
 const DashboardHome = () => {

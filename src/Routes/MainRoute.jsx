@@ -5,7 +5,7 @@ import Home from "../Pages/Home/Home";
 import Registration from "../Pages/Registration/Registration";
 import Login from "../Pages/Login/Login";
 import DashboardHome from "../Pages/Dashboard/DashboardPages/DashboardHome/DashboardHome";
-import DashHomeCompo from "../Pages/Dashboard/DashboardComponents/DashHomeCompo/DashHomeCompo";
+import DashHomeCompo from "../Pages/Dashboard/DashboardComponents/DashHomeCompo";
 import ClassAddForm from "../Pages/Dashboard/DashboardPages/ClassAddForm/ClassAddForm";
 import Instructors from "../Pages/Instructors/Instructors";
 import AllClasses from "../Pages/AllClasses/AllClasses";

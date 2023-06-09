@@ -11,6 +11,7 @@ import {
   updateProfile,
 } from "firebase/auth";
 import { app } from "../firebaseConfig/firebaseConfig";
+import axios from "axios";
 
 export const AuthContext = createContext();
 const auth = getAuth(app);
@@ -36,6 +37,20 @@ const AuthProvider = ({ children }) => {
   useEffect(() => {
     const unSubscribe = onAuthStateChanged(auth, (currentUser) => {
       setUser(currentUser);
+
+      //get and set user
+      if (currentUser) {
+        axios
+          .post("https://assignment-12-sever-side-anis1020.vercel.app/jwt", {
+            email: currentUser.email,
+          })
+          .then((data) => {
+            console.log(data.data);
+            localStorage.setItem("secret-token", data.data);
+          });
+      } else {
+        localStorage.removeItem("secret-token");
+      }
       setLoading(false);
     });
     return () => {

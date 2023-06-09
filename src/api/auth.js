@@ -3,7 +3,7 @@ export const saveUser = (user) => {
     email: user.email,
     name: user.displayName,
   };
-  fetch("http://localhost:5000/users/", {
+  fetch("https://assignment-12-sever-side-anis1020.vercel.app/users/", {
     method: "POST",
     headers: {
       "content-type": "application/json",

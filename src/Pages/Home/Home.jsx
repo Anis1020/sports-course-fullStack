@@ -9,7 +9,7 @@ const Home = () => {
   const [allClass, setAllClass] = useState([]);
   //http://localhost:5000/allClass
   useEffect(() => {
-    fetch("http://localhost:5000/allClass", {
+    fetch("https://assignment-12-sever-side-anis1020.vercel.app/allClass", {
       method: "GET",
     })
       .then((res) => res.json())
@@ -20,13 +20,16 @@ const Home = () => {
   }, []);
 
   const handleSelectedClass = (classes) => {
-    fetch("http://localhost:5000/selectedClass", {
-      method: "POST",
-      headers: {
-        "content-type": "application/json",
-      },
-      body: JSON.stringify(classes),
-    })
+    fetch(
+      "https://assignment-12-sever-side-anis1020.vercel.app/selectedClass",
+      {
+        method: "POST",
+        headers: {
+          "content-type": "application/json",
+        },
+        body: JSON.stringify(classes),
+      }
+    )
       .then((res) => res.json())
       .then((data) => {
         Swal.fire({

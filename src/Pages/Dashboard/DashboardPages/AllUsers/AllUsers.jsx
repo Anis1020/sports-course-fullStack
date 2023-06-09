@@ -9,7 +9,7 @@ const AllUsers = () => {
   const [admin, setAdmin] = useState(false);
 
   useEffect(() => {
-    fetch("http://localhost:5000/users", {
+    fetch("https://assignment-12-sever-side-anis1020.vercel.app/users", {
       method: "GET",
     })
       .then((res) => res.json())
@@ -20,9 +20,12 @@ const AllUsers = () => {
   }, [admin]);
 
   const handleMakeAdmin = (user) => {
-    fetch(`http://localhost:5000/users/admin/${user._id}`, {
-      method: "PATCH",
-    })
+    fetch(
+      `https://assignment-12-sever-side-anis1020.vercel.app/users/admin/${user._id}`,
+      {
+        method: "PATCH",
+      }
+    )
       .then((res) => res.json())
       .then((data) => {
         if (data.modifiedCount) {
@@ -39,9 +42,12 @@ const AllUsers = () => {
   };
 
   const handleDeleteUser = (user) => {
-    fetch(`http://localhost:5000/deleteUser/${user._id}`, {
-      method: "DELETE",
-    })
+    fetch(
+      `https://assignment-12-sever-side-anis1020.vercel.app/deleteUser/${user._id}`,
+      {
+        method: "DELETE",
+      }
+    )
       .then(() => {})
       .then((data) => {
         Swal.fire({

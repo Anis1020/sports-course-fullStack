@@ -3,9 +3,12 @@ import React, { useEffect, useState } from "react";
 const SelectedClasses = () => {
   const [selectedClass, setSelectedClass] = useState([]);
   useEffect(() => {
-    fetch("http://localhost:5000/selectedClass", {
-      method: "GET",
-    })
+    fetch(
+      "https://assignment-12-sever-side-anis1020.vercel.app/selectedClass",
+      {
+        method: "GET",
+      }
+    )
       .then((res) => res.json())
       .then((data) => {
         setSelectedClass(data);
