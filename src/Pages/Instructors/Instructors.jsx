@@ -36,7 +36,7 @@ const Instructors = () => {
                 // onClick={() => handleSelectedClass(clas)}
                 className="btn btn-primary"
               >
-                Select Class
+                Mr. {user.name}
                 {/* <Link to={`/dashboard/selectedClass/${clas._id}`}>
                 Select Class
               </Link> */}

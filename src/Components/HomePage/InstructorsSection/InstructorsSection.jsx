@@ -19,7 +19,7 @@ const InstructorsSection = ({ allUser }) => {
               <p className="text-left">Available seats: </p>
               <p className="text-left">Price: </p>
               <div className="card-actions justify-center mt-4">
-                <button className="btn btn-primary">Select Class</button>
+                <button className="btn btn-primary">Mr. {user.name}</button>
               </div>
             </div>
           </div>

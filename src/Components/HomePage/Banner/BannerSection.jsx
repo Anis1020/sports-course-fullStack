@@ -25,7 +25,7 @@ const BannerSection = () => {
   };
 
   return (
-    <div>
+    <div className="relative">
       <Swiper
         spaceBetween={30}
         centeredSlides={true}
@@ -72,7 +72,7 @@ const BannerSection = () => {
           <span ref={progressContent}></span>
         </div>
       </Swiper>
-      <div className="absolute top-36 z-10 flex justify-center items-center mr-10 gap-6">
+      <div className="absolute top-64 z-10 flex justify-center items-center mr-10 gap-6">
         <span className="space-y-5">
           {" "}
           <h2 className="text-4xl">WellCome to our sports school,</h2>
