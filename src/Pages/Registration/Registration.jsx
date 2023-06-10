@@ -3,6 +3,7 @@ import { FaEye, FaGoogle } from "react-icons/fa";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../AuthProvider/AuthProvider";
 import { saveUser } from "../../api/auth";
+import Swal from "sweetalert2";
 
 const Registration = () => {
   const [missMess, setMissMess] = useState("");
@@ -52,7 +53,28 @@ const Registration = () => {
         updateUserProfile(name, photo)
           .then(() => {
             // save user in db
-            saveUser(result.user);
+            // saveUser(result.user);
+            fetch(
+              "https://assignment-12-sever-side-anis1020.vercel.app/users/",
+              {
+                method: "POST",
+                headers: {
+                  "content-type": "application/json",
+                },
+                body: JSON.stringify(userData),
+              }
+            )
+              .then((res) => res.json())
+              .then((data) => {
+                Swal.fire({
+                  position: "top-end",
+                  icon: "success",
+                  title: "user Created successfully",
+                  showConfirmButton: false,
+                  timer: 1500,
+                });
+                console.log(data);
+              });
 
             navigate(from, { replace: true });
           })

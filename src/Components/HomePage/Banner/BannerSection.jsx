@@ -13,6 +13,7 @@ import img5 from "../../../assets/img 5.jpg";
 import img6 from "../../../assets/img 6.jpg";
 import img7 from "../../../assets/img 7.jpg";
 import img8 from "../../../assets/img 8.jpg";
+import img9 from "../../../assets/img99.jpg";
 import { Autoplay, Pagination } from "swiper";
 
 const BannerSection = () => {
@@ -71,6 +72,15 @@ const BannerSection = () => {
           <span ref={progressContent}></span>
         </div>
       </Swiper>
+      <div className="absolute top-36 z-10 flex justify-center items-center mr-10 gap-6">
+        <span className="space-y-5">
+          {" "}
+          <h2 className="text-4xl">WellCome to our sports school,</h2>
+          <p>here wi will learn many types of sports </p>
+          <button className="btn btn-primary">Enroll Now</button>
+        </span>
+        <img src={img9} className="rounded-full w-3/6 h-3/6" alt="" />
+      </div>
     </div>
   );
 };
