@@ -27,7 +27,7 @@ const Registration = () => {
     const photo = form.photo.value;
     const password = form.password.value;
     const confirmPassword = form.confirmPassword.value;
-    const userData = { name, email };
+    const userData = { name, email, photo };
     console.log(userData);
 
     if (!password === confirmPassword) {

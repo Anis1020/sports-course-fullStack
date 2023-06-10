@@ -7,6 +7,7 @@ import Swal from "sweetalert2";
 
 const Home = () => {
   const [allClass, setAllClass] = useState([]);
+  const [allUser, setAllUser] = useState([]);
   //http://localhost:5000/allClass
   useEffect(() => {
     fetch("https://assignment-12-sever-side-anis1020.vercel.app/allClass", {
@@ -16,6 +17,23 @@ const Home = () => {
       .then((data) => {
         // console.log(data);
         setAllClass(data.splice(0, 6));
+      });
+  }, []);
+
+  useEffect(() => {
+    fetch("https://assignment-12-sever-side-anis1020.vercel.app/users", {
+      method: "GET",
+      headers: {
+        "content-type": "application/json",
+      },
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        // console.log(data);
+
+        const filter = data.filter((user) => user.role === "instructor");
+        console.log(filter);
+        setAllUser(filter);
       });
   }, []);
 
@@ -50,7 +68,7 @@ const Home = () => {
         allClass={allClass}
         handleSelectedClass={handleSelectedClass}
       />
-      <InstructorsSection />
+      <InstructorsSection allUser={allUser} />
       <ReviewSection />
     </div>
   );

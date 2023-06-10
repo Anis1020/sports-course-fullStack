@@ -4,6 +4,8 @@ import DashHomeCompo from "../../DashboardComponents/DashHomeCompo";
 import ActiveLink from "../../../../Shared/ActiveLink/ActiveLink";
 
 const DashboardHome = () => {
+  const isAdmin = true;
+  const isInstructor = true;
   return (
     <div>
       <div className="drawer lg:drawer-open">
@@ -22,30 +24,84 @@ const DashboardHome = () => {
         <div className="drawer-side">
           <label htmlFor="my-drawer-2" className="drawer-overlay"></label>
           <ul className="menu p-4 w-80 h-full bg-base-200 text-base-content">
-            {/* Sidebar content here */}
+            {/* {isAdmin === "admin" ? (
+              <>
+                <li>
+                  <Link to="/">Home</Link>
+                </li>
+                <li>
+                  <ActiveLink to="/dashboard/allUsers">AllUsers</ActiveLink>
+                </li>
+              </>
+            ) : isInstructor === "instructor" ? (
+              <>
+                <li>
+                  <Link to="/">Home</Link>
+                </li>
+                <li>
+                  <ActiveLink to="/dashboard/addAClass">Add a Class</ActiveLink>
+                </li>{" "}
+                <li>
+                  <ActiveLink to="/dashboard/myClasses">My Classes</ActiveLink>
+                </li>
+              </>
+            ) : (
+              <>
+                <li>
+                  <Link to="/">Home</Link>
+                </li>
+                
+                <li>
+                  <ActiveLink to="/dashboard/selectedClass">
+                    My Selected Classes
+                  </ActiveLink>
+                </li>{" "}
+                <li>
+                  <ActiveLink to="/dashboard/enrolled">
+                    My Enrolled Classes
+                  </ActiveLink>
+                </li>
+              </>
+            )} */}
+            {/* its for instractor */}
+            {/* // <div className="divider"></div> */}
+            {isAdmin && (
+              <>
+                <li>
+                  <Link to="/">Home</Link>
+                </li>
+                <li>
+                  <ActiveLink to="/dashboard/allUsers">AllUsers</ActiveLink>
+                </li>
+              </>
+            )}
+            <div className="divider"></div>
+            {isInstructor && (
+              <>
+                <li>
+                  <Link to="/">Home</Link>
+                </li>
+                <li>
+                  <ActiveLink to="/dashboard/addAClass">Add a Class</ActiveLink>
+                </li>
+                <li>
+                  <ActiveLink to="/dashboard/myClasses">My Classes</ActiveLink>
+                </li>
+              </>
+            )}
+            <div className="divider"></div>
             <li>
               <Link to="/">Home</Link>
             </li>
-            {/* its for student */}
             <li>
               <ActiveLink to="/dashboard/selectedClass">
                 My Selected Classes
               </ActiveLink>
-            </li>{" "}
+            </li>
             <li>
               <ActiveLink to="/dashboard/enrolled">
                 My Enrolled Classes
               </ActiveLink>
-            </li>
-            {/* its for instractor */}
-            <li>
-              <ActiveLink to="/dashboard/addAClass">Add a Class</ActiveLink>
-            </li>{" "}
-            <li>
-              <ActiveLink to="/dashboard/myClasses">My Classes</ActiveLink>
-            </li>{" "}
-            <li>
-              <ActiveLink to="/dashboard/allUsers">AllUsers</ActiveLink>
             </li>
             <div className="divider"></div>
           </ul>
