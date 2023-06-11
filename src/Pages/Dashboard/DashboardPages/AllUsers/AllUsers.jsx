@@ -7,7 +7,7 @@ const AllUsers = () => {
   const { user } = useContext(AuthContext);
   const [allUser, setAllUser] = useState([]);
   const [admin, setAdmin] = useState(false);
-  const [buttonDisabled, setButtonDisabled] = useState(true);
+  const [buttonDisabled, setButtonDisabled] = useState(false);
 
   useEffect(() => {
     fetch("https://assignment-12-sever-side-anis1020.vercel.app/users", {
@@ -20,8 +20,9 @@ const AllUsers = () => {
       .then((data) => {
         console.log(data);
         setAllUser(data);
+        setButtonDisabled(!buttonDisabled);
       });
-  }, [admin]);
+  }, [admin, buttonDisabled]);
 
   const handleMakeAdmin = (user) => {
     fetch(
@@ -78,14 +79,16 @@ const AllUsers = () => {
     )
       .then(() => {})
       .then((data) => {
-        Swal.fire({
-          position: "top-end",
-          icon: "success",
-          title: `${user.name} successfully deleted`,
-          showConfirmButton: false,
-          timer: 1500,
-        });
-        setAdmin(true);
+        if (data.deletedCount > 0) {
+          Swal.fire({
+            position: "top-end",
+            icon: "success",
+            title: `${user.name} successfully deleted`,
+            showConfirmButton: false,
+            timer: 1500,
+          });
+          setAdmin(true);
+        }
       });
   };
 

@@ -1,11 +1,13 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import BannerSection from "../../Components/HomePage/Banner/BannerSection";
 import ClassSection from "../../Components/HomePage/ClassSection/ClassSection";
 import InstructorsSection from "../../Components/HomePage/InstructorsSection/InstructorsSection";
 import ReviewSection from "../../Components/HomePage/ReviewSection/ReviewSection";
 import Swal from "sweetalert2";
+import { AuthContext } from "../../AuthProvider/AuthProvider";
 
 const Home = () => {
+  const { user } = useContext(AuthContext);
   const [allClass, setAllClass] = useState([]);
   const [allUser, setAllUser] = useState([]);
   //http://localhost:5000/allClass
@@ -33,11 +35,14 @@ const Home = () => {
 
         const filter = data.filter((user) => user.role === "instructor");
         console.log(filter);
-        setAllUser(filter);
+        setAllUser(filter.splice(0, 6));
       });
   }, []);
 
-  const handleSelectedClass = (classes) => {
+  const handleSelectedClass = (user, classes) => {
+    if (!user) {
+      return alert("you have to login first to select any class");
+    }
     fetch(
       "https://assignment-12-sever-side-anis1020.vercel.app/selectedClass",
       {
@@ -67,6 +72,7 @@ const Home = () => {
       <ClassSection
         allClass={allClass}
         handleSelectedClass={handleSelectedClass}
+        user={user}
       />
       <InstructorsSection allUser={allUser} />
       <ReviewSection />

@@ -1,5 +1,6 @@
 import React, { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../../AuthProvider/AuthProvider";
+import Swal from "sweetalert2";
 
 const AllClasses = () => {
   const { user } = useContext(AuthContext);
@@ -15,6 +16,34 @@ const AllClasses = () => {
         setAllClass(data);
       });
   }, []);
+
+  const handleSelectedClass = (user, classes) => {
+    if (!user) {
+      return alert("you have to log in first ");
+    }
+    fetch(
+      "https://assignment-12-sever-side-anis1020.vercel.app/selectedClass",
+      {
+        method: "POST",
+        headers: {
+          "content-type": "application/json",
+        },
+        body: JSON.stringify(classes),
+      }
+    )
+      .then((res) => res.json())
+      .then((data) => {
+        Swal.fire({
+          position: "top-end",
+          icon: "success",
+          title: "Successfully selected",
+          showConfirmButton: false,
+          timer: 1500,
+        });
+        console.log(data);
+      });
+  };
+
   return (
     <div className="grid lg:grid-cols-3">
       {allClass.map((classes) => (
@@ -34,7 +63,12 @@ const AllClasses = () => {
             </p>
             <p className="text-left">Price: {classes.price}</p>
             <div className="card-actions justify-center mt-4">
-              <button className="btn btn-primary">Select Class</button>
+              <button
+                onClick={() => handleSelectedClass(user, classes)}
+                className="btn btn-primary"
+              >
+                Select Class
+              </button>
             </div>
           </div>
         </div>

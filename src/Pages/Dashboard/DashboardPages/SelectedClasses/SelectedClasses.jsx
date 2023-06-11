@@ -1,7 +1,9 @@
 import React, { useEffect, useState } from "react";
+import Swal from "sweetalert2";
 
 const SelectedClasses = () => {
   const [selectedClass, setSelectedClass] = useState([]);
+  const [selectedCls, setSelectedCls] = useState(false);
   useEffect(() => {
     fetch(
       "https://assignment-12-sever-side-anis1020.vercel.app/selectedClass",
@@ -14,7 +16,31 @@ const SelectedClasses = () => {
         setSelectedClass(data);
         console.log(data);
       });
-  }, []);
+  }, [selectedCls]);
+
+  //http://localhost:5000/
+  const handleDeleteClass = (selectClass) => {
+    fetch(
+      `https://assignment-12-sever-side-anis1020.vercel.app/classDelete/${selectClass._id}`,
+      {
+        method: "DELETE",
+      }
+    )
+      .then((res) => res.json())
+      .then((data) => {
+        if (data.deletedCount > 0) {
+          Swal.fire({
+            position: "top-end",
+            icon: "success",
+            title: `${selectClass.className} successfully deleted`,
+            showConfirmButton: false,
+            timer: 1500,
+          });
+          setSelectedCls(true);
+        }
+        console.log(data);
+      });
+  };
   return (
     <div className="grid lg:grid-cols-2 w-full">
       {selectedClass.map((selectClass) => (
@@ -34,11 +60,11 @@ const SelectedClasses = () => {
             <p className="text-left">Price: ${selectClass.price}</p>
             <div className="card-actions justify-between mt-4">
               <button
-                // onClick={() => handleSelectedClass(clas)}
+                onClick={() => handleDeleteClass(selectClass)}
                 className="btn btn-warning"
               >
                 Cancel
-                {/* <Link to={`/dashboard/selectedClass/${clas._id}`}>
+                {/* <Link to={`/dashboard/selectedClass/${cls._id}`}>
                 Select Class
               </Link> */}
               </button>

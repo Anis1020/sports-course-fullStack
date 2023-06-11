@@ -1,5 +1,5 @@
 import React from "react";
-import { FaTrash, FaUser } from "react-icons/fa";
+import { FaEdit, FaTrash, FaUser } from "react-icons/fa";
 
 const MyClasses = () => {
   return (
@@ -13,7 +13,7 @@ const MyClasses = () => {
               <th></th>
               <th>Name</th>
               <th>Email</th>
-              <th>Role</th>
+              <th>Edit</th>
               <th>Action</th>
             </tr>
           </thead>
@@ -24,7 +24,7 @@ const MyClasses = () => {
               <td>shakil khan</td>
               <td>Quality Control Specialist</td>
               <td>
-                <FaUser />
+                <FaEdit />
               </td>
               <td>
                 <FaTrash />

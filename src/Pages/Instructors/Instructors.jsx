@@ -27,10 +27,9 @@ const Instructors = () => {
             <img src={user.photo} alt="Shoes" />
           </figure>
           <div className="card-body">
-            <h2 className="card-title">Class Name: {user.className}</h2>
             <h2 className="card-title">Instructor Name: {user.name}</h2>
-            <p className="text-left">Available seats: {user.availAbleSeats}</p>
-            <p className="text-left">Price: ${user.price}</p>
+            <h2 className="card-title">Email: {user.email}</h2>
+
             <div className="card-actions justify-center mt-4">
               <button
                 // onClick={() => handleSelectedClass(clas)}

@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-const ClassSection = ({ allClass, handleSelectedClass }) => {
+const ClassSection = ({ user, allClass, handleSelectedClass }) => {
   // console.log(allClass);
   return (
     <div>
@@ -21,7 +21,7 @@ const ClassSection = ({ allClass, handleSelectedClass }) => {
               <p className="text-left">Price: ${clas.price}</p>
               <div className="card-actions justify-center mt-4">
                 <button
-                  onClick={() => handleSelectedClass(clas)}
+                  onClick={() => handleSelectedClass(user, clas)}
                   className="btn btn-primary"
                 >
                   Select Class
