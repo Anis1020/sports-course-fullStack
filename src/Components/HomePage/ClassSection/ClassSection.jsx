@@ -1,7 +1,12 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-const ClassSection = ({ user, allClass, handleSelectedClass }) => {
+const ClassSection = ({
+  user,
+  allClass,
+  handleSelectedClass,
+  buttonDisable,
+}) => {
   // console.log(allClass);
   return (
     <div>
@@ -20,15 +25,16 @@ const ClassSection = ({ user, allClass, handleSelectedClass }) => {
               </p>
               <p className="text-left">Price: ${clas.price}</p>
               <div className="card-actions justify-center mt-4">
+                {/* {buttonDisable ? (
+                  <button className="btn btn-disabled">Disable</button>
+                ) : ( */}
                 <button
                   onClick={() => handleSelectedClass(user, clas)}
                   className="btn btn-primary"
                 >
                   Select Class
-                  {/* <Link to={`/dashboard/selectedClass/${clas._id}`}>
-                    Select Class
-                  </Link> */}
                 </button>
+                {/* )} */}
               </div>
             </div>
           </div>

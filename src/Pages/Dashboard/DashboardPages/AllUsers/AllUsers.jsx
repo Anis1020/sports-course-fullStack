@@ -2,6 +2,7 @@ import React, { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../../../../AuthProvider/AuthProvider";
 import { FaTrash, FaUser } from "react-icons/fa";
 import Swal from "sweetalert2";
+import "./allUser.css";
 
 const AllUsers = () => {
   const { user } = useContext(AuthContext);
@@ -18,7 +19,6 @@ const AllUsers = () => {
     })
       .then((res) => res.json())
       .then((data) => {
-        console.log(data);
         setAllUser(data);
         setButtonDisabled(!buttonDisabled);
       });
@@ -43,6 +43,9 @@ const AllUsers = () => {
           });
         }
         setAdmin(true);
+        // if(user.role==='admin'){
+        //   return disable=true
+        // }
         // setButtonDisabled(false);
       });
   };
@@ -121,22 +124,30 @@ const AllUsers = () => {
 
                 <td>
                   <span>
-                    <button
-                      onClick={() => handleMakeAdmin(user)}
-                      className="btn btn-sm btn-primary mr-3"
-                      // disabled={buttonDisabled}
-                      // onClick={() => window.my_modal_3.showModal()}
-                    >
-                      admin
-                    </button>
+                    {user.role === "admin" ? (
+                      "Disable"
+                    ) : (
+                      <button
+                        onClick={() => handleMakeAdmin(user)}
+                        className="btn btn-sm btn-primary mr-3"
+                        // disabled={buttonDisabled}
+                        // onClick={() => window.my_modal_3.showModal()}
+                      >
+                        admin
+                      </button>
+                    )}
                   </span>
-                  <button
-                    // disabled={!buttonDisabled}
-                    onClick={() => handleMakeInstructor(user)}
-                    className="btn btn-sm btn-primary"
-                  >
-                    Instructor
-                  </button>
+                  {user.role === "instructor" ? (
+                    "Disable"
+                  ) : (
+                    <button
+                      // disabled={!buttonDisabled}
+                      onClick={() => handleMakeInstructor(user)}
+                      className="btn btn-sm btn-primary ml-2"
+                    >
+                      Instructor
+                    </button>
+                  )}
                 </td>
                 <td onClick={() => handleDeleteUser(user)}>
                   <FaTrash />

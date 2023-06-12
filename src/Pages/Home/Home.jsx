@@ -10,6 +10,7 @@ const Home = () => {
   const { user } = useContext(AuthContext);
   const [allClass, setAllClass] = useState([]);
   const [allUser, setAllUser] = useState([]);
+  // const [buttonDisable, setButtonDisable] = useState(false);
   //http://localhost:5000/allClass
   useEffect(() => {
     fetch("https://assignment-12-sever-side-anis1020.vercel.app/allClass", {
@@ -34,7 +35,7 @@ const Home = () => {
         // console.log(data);
 
         const filter = data.filter((user) => user.role === "instructor");
-        console.log(filter);
+
         setAllUser(filter.splice(0, 6));
       });
   }, []);
@@ -55,13 +56,17 @@ const Home = () => {
     )
       .then((res) => res.json())
       .then((data) => {
-        Swal.fire({
-          position: "top-end",
-          icon: "success",
-          title: "Successfully selected",
-          showConfirmButton: false,
-          timer: 1500,
-        });
+        if (data.acknowledged == true) {
+          Swal.fire({
+            position: "top-end",
+            icon: "success",
+            title: "Successfully selected",
+            showConfirmButton: false,
+            timer: 1500,
+          });
+
+          // setButtonDisable(true);
+        }
         console.log(data);
       });
   };
@@ -73,6 +78,7 @@ const Home = () => {
         allClass={allClass}
         handleSelectedClass={handleSelectedClass}
         user={user}
+        // buttonDisable={buttonDisable}
       />
       <InstructorsSection allUser={allUser} />
       <ReviewSection />

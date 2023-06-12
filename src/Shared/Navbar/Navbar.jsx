@@ -26,6 +26,11 @@ const Navbar = () => {
       )}
     </div>
   );
+
+  //data-theme="light"
+  const themeToggle = () => {
+    console.log("toggle");
+  };
   return (
     <div>
       <div className="navbar bg-base-100">
@@ -55,6 +60,10 @@ const Navbar = () => {
             </ul>
           </div>
           <a className="btn btn-ghost normal-case text-xl">Sports School</a>
+          <button className="btn" onClick={themeToggle}>
+            {" "}
+            toggle theme
+          </button>
         </div>
         <div className="navbar-center hidden lg:flex ml-auto">
           <ul className="menu menu-horizontal px-1">{navbarOptions}</ul>

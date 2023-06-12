@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 import Swal from "sweetalert2";
 
 const SelectedClasses = () => {
@@ -14,7 +15,7 @@ const SelectedClasses = () => {
       .then((res) => res.json())
       .then((data) => {
         setSelectedClass(data);
-        console.log(data);
+        // console.log(data);
       });
   }, [selectedCls]);
 
@@ -68,7 +69,12 @@ const SelectedClasses = () => {
                 Select Class
               </Link> */}
               </button>
-              <button className="btn btn-primary">Pay Now</button>
+              <Link
+                to={`/dashboard/payment/${selectClass._id}`}
+                className="btn btn-primary"
+              >
+                Pay Now
+              </Link>
             </div>
           </div>
         </div>

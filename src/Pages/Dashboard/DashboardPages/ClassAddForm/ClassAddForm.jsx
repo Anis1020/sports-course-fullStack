@@ -22,6 +22,23 @@ const ClassAddForm = () => {
       email: user.email,
     };
 
+    // Image Upload
+    // const image = event.target.image.files[0];
+    // const formData = new FormData();
+    // formData.append("image", image);
+
+    // const url = `https://api.imgbb.com/1/upload?key=${
+    //   import.meta.env.VITE_IMAGE_SECRET
+    // }`;
+    // fetch(url, {
+    //   method: "POST",
+    //   body: formData,
+    // })
+    //   .then((res) => res.json())
+    //   .then((imageData) => {
+    //     const imageUrl = imageData.data.display_url;
+    //   });
+
     fetch("https://assignment-12-sever-side-anis1020.vercel.app/addAClass", {
       method: "POST",
       headers: {
@@ -63,9 +80,11 @@ const ClassAddForm = () => {
               <span className="label-text">Class Image</span>
             </label>
             <input
+              required
               type="url"
               name="classImg"
               className="input input-bordered"
+              // accept="image"
             />
           </div>
           <div className="form-control">

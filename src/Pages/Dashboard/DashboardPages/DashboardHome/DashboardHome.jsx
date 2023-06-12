@@ -65,6 +65,7 @@ const DashboardHome = () => {
             )} */}
             {/* its for instractor */}
             {/* // <div className="divider"></div> */}
+
             {isAdmin && (
               <>
                 <li>

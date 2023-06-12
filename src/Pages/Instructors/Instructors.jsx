@@ -19,12 +19,13 @@ const Instructors = () => {
         setAllUser(filter);
       });
   }, []);
+  console.log(allUser);
   return (
     <div className="grid lg:grid-cols-3">
       {allUser.map((user) => (
         <div className="card w-96 bg-base-100 shadow-2xl my-8" key={user._id}>
           <figure>
-            <img src={user.photo} alt="Shoes" />
+            <img src={user?.photo} alt="Shoes" />
           </figure>
           <div className="card-body">
             <h2 className="card-title">Instructor Name: {user.name}</h2>

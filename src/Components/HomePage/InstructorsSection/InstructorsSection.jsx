@@ -8,10 +8,7 @@ const InstructorsSection = ({ allUser }) => {
         {allUser.map((user) => (
           <div className="card w-96 bg-base-100 shadow-2xl my-8" key={user._id}>
             <figure>
-              <img
-                src="/images/stock/photo-1606107557195-0e29a4b5b4aa.jpg"
-                alt="Shoes"
-              />
+              <img src={user.photo} alt="Shoes" />
             </figure>
             <div className="card-body">
               <h2 className="card-title">Class Name: </h2>

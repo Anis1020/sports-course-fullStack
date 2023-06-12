@@ -45,7 +45,7 @@ const AuthProvider = ({ children }) => {
             email: currentUser.email,
           })
           .then((data) => {
-            console.log(data.data);
+            // console.log(data.data);
             localStorage.setItem("secret-token", data.data);
           });
       } else {
