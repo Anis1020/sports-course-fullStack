@@ -15,6 +15,7 @@ import MyClasses from "../Pages/Dashboard/DashboardPages/MyClasses/MyClasses";
 import SelectedClasses from "../Pages/Dashboard/DashboardPages/SelectedClasses/SelectedClasses";
 import EnroledClass from "../Pages/Dashboard/DashboardPages/EnroledClass/EnroledClass";
 import Payment from "../Pages/Dashboard/DashboardPages/Payment/Payment";
+import UseAdmin from "../Pages/Dashboard/UseAdmin/UseAdmin";
 
 export const router = createBrowserRouter([
   {
@@ -79,6 +80,10 @@ export const router = createBrowserRouter([
           fetch(
             `https://assignment-12-sever-side-anis1020.vercel.app/singleCls/${params.id}`
           ),
+      },
+      {
+        path: "/dashboard/adminTest",
+        element: <UseAdmin />,
       },
     ],
   },

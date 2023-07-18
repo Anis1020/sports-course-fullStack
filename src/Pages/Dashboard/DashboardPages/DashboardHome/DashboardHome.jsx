@@ -1,11 +1,12 @@
 import React from "react";
 import { Link, Outlet } from "react-router-dom";
-import DashHomeCompo from "../../DashboardComponents/DashHomeCompo";
+
 import ActiveLink from "../../../../Shared/ActiveLink/ActiveLink";
+import DashHomeCompo from "../../DashboardComponents/DashHomeCompo";
 
 const DashboardHome = () => {
-  const isAdmin = true;
-  const isInstructor = true;
+  const isAdmin = DashHomeCompo();
+  // const isInstructor = true;
   return (
     <div>
       <div className="drawer lg:drawer-open">
@@ -24,7 +25,7 @@ const DashboardHome = () => {
         <div className="drawer-side">
           <label htmlFor="my-drawer-2" className="drawer-overlay"></label>
           <ul className="menu p-4 w-80 h-full bg-base-200 text-base-content">
-            {/* {isAdmin === "admin" ? (
+            {isAdmin === "admin" ? (
               <>
                 <li>
                   <Link to="/">Home</Link>
@@ -33,7 +34,7 @@ const DashboardHome = () => {
                   <ActiveLink to="/dashboard/allUsers">AllUsers</ActiveLink>
                 </li>
               </>
-            ) : isInstructor === "instructor" ? (
+            ) : isAdmin === "instructor" ? (
               <>
                 <li>
                   <Link to="/">Home</Link>
@@ -50,7 +51,6 @@ const DashboardHome = () => {
                 <li>
                   <Link to="/">Home</Link>
                 </li>
-                
                 <li>
                   <ActiveLink to="/dashboard/selectedClass">
                     My Selected Classes
@@ -62,11 +62,11 @@ const DashboardHome = () => {
                   </ActiveLink>
                 </li>
               </>
-            )} */}
+            )}
             {/* its for instractor */}
             {/* // <div className="divider"></div> */}
 
-            {isAdmin && (
+            {/* {isAdmin && (
               <>
                 <li>
                   <Link to="/">Home</Link>
@@ -104,7 +104,7 @@ const DashboardHome = () => {
                 My Enrolled Classes
               </ActiveLink>
             </li>
-            <div className="divider"></div>
+            <div className="divider"></div> */}
           </ul>
         </div>
       </div>

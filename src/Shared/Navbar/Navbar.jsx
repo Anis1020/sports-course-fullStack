@@ -28,9 +28,9 @@ const Navbar = () => {
   );
 
   //data-theme="light"
-  const themeToggle = () => {
-    console.log("toggle");
-  };
+  // const themeToggle = () => {
+  //   console.log("toggle");
+  // };
   return (
     <div>
       <div className="navbar bg-base-100">
@@ -60,10 +60,10 @@ const Navbar = () => {
             </ul>
           </div>
           <a className="btn btn-ghost normal-case text-xl">Sports School</a>
-          <button className="btn" onClick={themeToggle}>
+          <Link to="/dashboard/adminTest">
             {" "}
-            toggle theme
-          </button>
+            <button className="btn">toggle theme</button>
+          </Link>
         </div>
         <div className="navbar-center hidden lg:flex ml-auto">
           <ul className="menu menu-horizontal px-1">{navbarOptions}</ul>

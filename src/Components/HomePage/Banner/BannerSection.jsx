@@ -72,7 +72,7 @@ const BannerSection = () => {
           <span ref={progressContent}></span>
         </div>
       </Swiper>
-      <div className="absolute top-64 z-10 flex justify-center items-center mr-10 gap-6">
+      {/* <div className="absolute top-64 z-10 flex  justify-center items-center mr-10 gap-6">
         <span className="space-y-5">
           {" "}
           <h2 className="text-4xl">WellCome to our sports school,</h2>
@@ -80,7 +80,7 @@ const BannerSection = () => {
           <button className="btn btn-primary">Enroll Now</button>
         </span>
         <img src={img9} className="rounded-full w-3/6 h-3/6" alt="" />
-      </div>
+      </div> */}
     </div>
   );
 };
